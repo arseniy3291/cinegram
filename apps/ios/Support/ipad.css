@@ -1,0 +1,155 @@
+/* Load after main.v20.css in the native iOS bundle.
+   The native device class keeps every rule off iPhone, including landscape.
+   Narrow iPad multitasking windows intentionally retain the mobile layout. */
+@media (min-width: 700px) and (min-height: 600px) {
+  html.cinegram-ipad {
+    --ipad-sidebar-width: 104px;
+    --ipad-gutter: 24px;
+    --nav-h: 0px;
+    --hdr-h: 76px;
+  }
+
+  html.cinegram-ipad .screen { left: var(--ipad-sidebar-width); }
+  html.cinegram-ipad .bottom-nav {
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    width: var(--ipad-sidebar-width);
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 12px;
+    padding: max(24px, env(safe-area-inset-top)) 10px max(24px, env(safe-area-inset-bottom));
+    border-top: 0;
+    border-right: 1px solid var(--glass-edge);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  html.cinegram-ipad .nav-btn {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 78px;
+    padding: 12px 6px;
+    gap: 8px;
+    border-radius: 16px;
+    font-size: 12px;
+    line-height: 1.3;
+    white-space: normal;
+    touch-action: manipulation;
+  }
+  html.cinegram-ipad .nav-btn svg { width: 27px; height: 27px; flex-shrink: 0; }
+  html.cinegram-ipad .nav-btn.active { background: rgba(229, 9, 20, 0.12); }
+  html.cinegram-ipad .nav-btn.active svg { transform: none; }
+
+  html.cinegram-ipad .header {
+    height: calc(var(--hdr-h) + env(safe-area-inset-top, 0px));
+    padding: env(safe-area-inset-top, 0px) var(--ipad-gutter) 0;
+  }
+  html.cinegram-ipad .header-logo-full-img { height: 38px !important; max-height: 38px !important; }
+  html.cinegram-ipad .home-scroll { min-height: 0; padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+  html.cinegram-ipad .hero-banner { height: clamp(220px, 30vh, 340px) !important; min-height: 220px !important; }
+  html.cinegram-ipad .splash-title { font-size: clamp(40px, 5vw, 64px) !important; }
+  html.cinegram-ipad .splash-subtitle { font-size: 12px !important; letter-spacing: 4px !important; }
+  html.cinegram-ipad .tabs-wrapper { padding: 16px var(--ipad-gutter) 8px !important; }
+  html.cinegram-ipad .modern-segmented-control { width: 360px !important; height: 54px !important; max-width: 100%; }
+  html.cinegram-ipad .tab-segment { font-size: 16px !important; min-height: 44px; }
+  html.cinegram-ipad .section-hdr { padding-left: var(--ipad-gutter); padding-right: var(--ipad-gutter); }
+  html.cinegram-ipad .section-title { font-size: 22px; }
+  html.cinegram-ipad .carousel-row, html.cinegram-ipad .chips-row { gap: 12px !important; padding: 16px var(--ipad-gutter) !important; }
+  html.cinegram-ipad .chips-row { margin-bottom: 0 !important; }
+  html.cinegram-ipad .genre-chip {
+    min-width: 140px !important;
+    height: 56px !important;
+    padding: 0 20px !important;
+    font-size: 15px !important;
+  }
+  html.cinegram-ipad .card-grid, html.cinegram-ipad #popular-grid {
+    grid-template-columns: repeat(auto-fill, minmax(156px, 1fr)) !important;
+    gap: 18px !important;
+    padding: 16px var(--ipad-gutter) 28px !important;
+  }
+  html.cinegram-ipad .carousel-row .movie-card { width: 156px; }
+
+  /* Keep a 44-point touch target without enlarging every poster button. */
+  html.cinegram-ipad .hdr-icon-btn, html.cinegram-ipad .back-btn, html.cinegram-ipad .s-action-btn, html.cinegram-ipad .close-btn, html.cinegram-ipad .player-close-floating {
+    min-width: 44px;
+    min-height: 44px;
+    flex-shrink: 0;
+    touch-action: manipulation;
+  }
+  html.cinegram-ipad .f-chip, html.cinegram-ipad .source-btn, html.cinegram-ipad .see-all-btn { min-height: 44px; }
+  html.cinegram-ipad .f-chip, html.cinegram-ipad .source-btn { padding: 10px 16px; font-size: 15px; }
+  html.cinegram-ipad button:focus-visible, html.cinegram-ipad a:focus-visible, html.cinegram-ipad select:focus-visible, html.cinegram-ipad .toggle-switch:focus-within {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  html.cinegram-ipad .search-overlay {
+    left: var(--ipad-sidebar-width);
+    padding: max(24px, env(safe-area-inset-top)) var(--ipad-gutter) max(24px, env(safe-area-inset-bottom));
+    overflow-y: auto;
+  }
+  html.cinegram-ipad .search-panel { max-width: 760px; min-height: 0; max-height: 100%; gap: 14px; }
+  html.cinegram-ipad .search-field-modern { height: 60px; min-height: 60px; flex-shrink: 0; }
+  html.cinegram-ipad .search-field-modern #search-input { min-width: 0; font-size: 18px; }
+  html.cinegram-ipad .search-field-actions { flex-shrink: 0; }
+  html.cinegram-ipad .search-filters-panel { max-height: 38vh; overflow-y: auto; flex-shrink: 0; }
+  html.cinegram-ipad .search-results-viewport { min-height: 0; }
+
+  html.cinegram-ipad .movie-page-scroll { padding: 24px var(--ipad-gutter) max(32px, env(safe-area-inset-bottom)); overflow-x: hidden; }
+  html.cinegram-ipad .movie-top-bar { padding: 0; }
+  html.cinegram-ipad .movie-cover-row { gap: 24px !important; padding: 24px 0 !important; align-items: flex-start; }
+  html.cinegram-ipad .movie-cover { width: clamp(150px, 21vw, 240px) !important; height: auto; }
+  html.cinegram-ipad .movie-meta-col { min-width: 0; gap: 10px; }
+  html.cinegram-ipad .movie-h1 { font-size: clamp(26px, 3vw, 40px) !important; line-height: 1.15 !important; overflow-wrap: anywhere; }
+  html.cinegram-ipad .movie-sub, html.cinegram-ipad .movie-genre-tag { font-size: 15px !important; line-height: 1.4; }
+  html.cinegram-ipad .movie-extra-info { font-size: 14px !important; gap: 8px !important; }
+  html.cinegram-ipad .mei-item { min-width: 0; }
+  html.cinegram-ipad .mei-item span:last-child { min-width: 0; overflow-wrap: anywhere; }
+  html.cinegram-ipad .movie-desc-text { padding: 0 0 24px !important; font-size: 16px !important; line-height: 1.65 !important; }
+  html.cinegram-ipad #screen-movie .watchlist-btn, html.cinegram-ipad #screen-movie .big-play-btn {
+    width: 100% !important;
+    min-height: 54px;
+    margin: 12px 0 !important;
+    font-size: 17px !important;
+  }
+  html.cinegram-ipad .kb-container { width: 100%; margin: 24px 0; }
+  /* Theater mode must fit the content pane instead of extending under the sidebar. */
+  html.cinegram-ipad .kb-container.theater { width: 100%; }
+  html.cinegram-ipad .player-sources-bar { gap: 10px; padding: 14px 16px; }
+  html.cinegram-ipad .player-close-floating { opacity: 1; transform: none; pointer-events: auto; }
+  html.cinegram-ipad .player-modal { align-items: center; justify-content: center; padding: 24px; }
+  html.cinegram-ipad .pm-inner { max-width: 1100px; max-height: 92%; border-radius: 20px; }
+  html.cinegram-ipad .pm-inner:fullscreen, html.cinegram-ipad .pm-inner:-webkit-full-screen { max-width: none; max-height: 100%; border-radius: 0; }
+
+  html.cinegram-ipad .history-list { height: auto; padding: 20px var(--ipad-gutter); gap: 14px; }
+  html.cinegram-ipad .hist-item { padding: 14px; gap: 18px; }
+  html.cinegram-ipad .hist-item img { width: 72px; }
+  html.cinegram-ipad .hist-name { font-size: 17px; }
+  html.cinegram-ipad .hist-meta { font-size: 14px; }
+  html.cinegram-ipad .settings-container { width: 100%; max-width: 840px; padding: 20px var(--ipad-gutter); gap: 18px; }
+  html.cinegram-ipad .setting-card { min-height: 88px; padding: 20px; flex-wrap: wrap; }
+  html.cinegram-ipad .setting-text { flex: 1 1 180px; min-width: 0; }
+  html.cinegram-ipad .setting-title { font-size: 17px; }
+  html.cinegram-ipad .setting-sub { font-size: 14px; line-height: 1.5; }
+  html.cinegram-ipad .settings-select { min-height: 44px; max-width: 100%; font-size: 16px; }
+  html.cinegram-ipad .toggle-switch { width: 56px; height: 44px; }
+  html.cinegram-ipad .toggle-slider { inset: 6px 0; }
+  html.cinegram-ipad .toggle-slider:before { width: 24px; height: 24px; left: 3px; bottom: 3px; }
+  html.cinegram-ipad input:checked + .toggle-slider:before { transform: translateX(24px); }
+  html.cinegram-ipad .toast { left: calc(50% + var(--ipad-sidebar-width) / 2); bottom: max(24px, env(safe-area-inset-bottom)); max-width: calc(100% - var(--ipad-sidebar-width) - 48px); }
+}
+
+@media (min-width: 1000px) and (min-height: 600px) {
+  html.cinegram-ipad { --ipad-sidebar-width: 184px; --ipad-gutter: 32px; }
+  html.cinegram-ipad .bottom-nav { padding-left: 14px; padding-right: 14px; gap: 16px; }
+  html.cinegram-ipad .nav-btn { min-height: 64px; flex-direction: row; justify-content: flex-start; padding: 16px; gap: 14px; font-size: 15px; text-align: left; }
+  html.cinegram-ipad .movie-extra-info { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 18px !important; }
+  html.cinegram-ipad .mei-item:last-child { grid-column: 1 / -1; }
+}
+
+@media (min-width: 700px) and (min-height: 600px) and (prefers-reduced-motion: reduce) {
+  html.cinegram-ipad .nav-btn, html.cinegram-ipad .nav-btn svg, html.cinegram-ipad .movie-card, html.cinegram-ipad .genre-chip { transition: none !important; }
+}
